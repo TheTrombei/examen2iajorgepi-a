@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>425</width>
+    <height>361</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*
+ * TEMA OSCURO PROFESIONAL (MODERN DARK)
+ * Aplica esto en la propiedad 'styleSheet' de tu QMainWindow.
+ */
+
+/* Estilo base para la ventana (opcional, pero recomendado) */
+QMainWindow {
+    background-color: #2B2B2B; /* Fondo principal muy oscuro */
+    color: #F0F0F0; /* Color de texto base (claro) */
+}
+
+/* --- QMenuBar (Barra de Menú Principal) --- */
+QMenuBar {
+    background-color: #3C3C3C; /* Fondo de la barra de menú */
+    color: #F0F0F0; /* Color del texto */
+    padding: 3px 5px; /* Espaciado interno */
+    border-bottom: 1px solid #4A4A4A; /* Línea sutil de separación */
+}
+
+/* Ítems de la barra de menú (Ej: &quot;Archivo&quot;, &quot;Editar&quot;) */
+QMenuBar::item {
+    background: transparent; /* Fondo transparente por defecto */
+    padding: 5px 10px; /* Espaciado de cada ítem */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+/* Ítems al pasar el ratón (hover) o al estar seleccionados (menú abierto) */
+QMenuBar::item:selected, QMenuBar::item:pressed {
+    background-color: #0078D7; /* Color de realce (azul) */
+    color: #FFFFFF; /* Texto blanco al seleccionar */
+}
+
+/* --- QMenu (Menú Desplegable) --- */
+QMenu {
+    background-color: #3C3C3C; /* Fondo del menú desplegable */
+    color: #F0F0F0; /* Color del texto */
+    border: 1px solid #4A4A4A; /* Borde del menú */
+    padding: 5px; /* Espaciado interno del contenedor del menú */
+}
+
+/* Ítems dentro del menú desplegable (QAction) */
+QMenu::item {
+    padding: 6px 25px 6px 25px; /* Espaciado (amplio a los lados para íconos/shortcuts) */
+    margin: 2px 4px; /* Margen entre ítems */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+/* Ítem al ser seleccionado (hover) */
+QMenu::item:selected {
+    background-color: #0078D7; /* Mismo realce azul */
+    color: #FFFFFF;
+}
+
+/* Ítem deshabilitado (QAction.setEnabled(false)) */
+QMenu::item:disabled {
+    color: #888888; /* Color de texto grisáceo */
+    background-color: transparent; /* Sin fondo */
+}
+
+/* Separador dentro del menú */
+QMenu::separator {
+    height: 1px;
+    background-color: #4A4A4A; /* Línea de separación */
+    margin: 5px 0px; /* Espacio arriba y abajo del separador */
+}
+
+/* --- QStatusBar (Barra de Estado) --- */
+QStatusBar {
+    background-color: #3C3C3C; /* Mismo fondo que la barra de menú */
+    color: #D0D0D0; /* Texto ligeramente más tenue */
+    border-top: 1px solid #4A4A4A; /* Línea superior de separación */
+    padding: 3px;
+}
+
+QStatusBar::item {
+    border: none; /* Sin bordes entre los ítems de la barra de estado */
+    padding: 0px 5px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>425</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuModelos">
+    <property name="title">
+     <string>Modelos</string>
+    </property>
+    <addaction name="actionbasicos"/>
+    <addaction name="actionlangchain_2"/>
+    <addaction name="separator"/>
+    <addaction name="actionsalir"/>
+   </widget>
+   <addaction name="menuModelos"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionbasicos">
+   <property name="text">
+    <string>basicos</string>
+   </property>
+  </action>
+  <action name="actionsalir">
+   <property name="text">
+    <string>salir</string>
+   </property>
+  </action>
+  <action name="actionlangchain_2">
+   <property name="text">
+    <string>langchain</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
