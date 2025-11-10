@@ -5,7 +5,6 @@ from langchain_core.prompts import PromptTemplate
 
 class ModeloGemini:
     
-    # Constructor corregido (de _init_ a __init__)
     def __init__(self, api_key: str = None):
         # Cargar variables desde .env si existe
         load_dotenv()
@@ -18,7 +17,7 @@ class ModeloGemini:
 
         # Configurar el modelo de Gemini con LangChain
         self.llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash",  # <--- Modelo corregido
+            model="gemini-2.5-flash", 
             temperature=0.7,
             google_api_key=api_key
         )

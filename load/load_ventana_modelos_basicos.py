@@ -2,10 +2,9 @@ from PyQt5 import QtWidgets, uic, QtCore
 from PyQt5.QtCore import QPropertyAnimation
 from modelos.modelogemini import ModeloGemini
 from modelos.modelohistorialdos import ModeloHistorialdos
-from modelos.modelohistoriallimitado import ModeloHistorialLimitado  # <-- Chat (memoria limitada)
+from modelos.modelohistoriallimitado import ModeloHistorialLimitado  
 
-DEBUG = False  # pon True si quieres ver logs de depuración
-
+DEBUG = False 
 
 class Load_ventana_modelos_basicos(QtWidgets.QDialog):
     def __init__(self):
@@ -32,7 +31,6 @@ class Load_ventana_modelos_basicos(QtWidgets.QDialog):
         self.boton_memoria.clicked.connect(self._ir_a_memoria)
         self.boton_chat.clicked.connect(self._ir_a_chat)
 
-        # === Conectar botones "Enviar" por pestaña (nombres reales de tu UI) ===
         # Prompt
         self.boton_enviar.clicked.connect(self.ejecutar_prompt)
         if DEBUG: print("[DEBUG] conectado boton_enviar (Prompt) -> ejecutar_prompt")
@@ -47,8 +45,8 @@ class Load_ventana_modelos_basicos(QtWidgets.QDialog):
 
         # === Instancias perezosas de los modelos ===
         self._gemini = None                    # Prompt
-        self._memoria_model = None             # Memoria persistente
-        self._chat_model_limited = None        # Chat con 5 turnos de memoria
+        self._memoria_model = None             
+        self._chat_model_limited = None        
 
     # ---------------- NAVEGACIÓN ----------------
     def _ir_a_prompt(self):
@@ -74,7 +72,7 @@ class Load_ventana_modelos_basicos(QtWidgets.QDialog):
 
     # ===================== PROMPT =====================
     def ejecutar_prompt(self):
-        prompt = self.imput_prompt.text().strip()  # <--- CORREGIDO
+        prompt = self.imput_prompt.text().strip()
         salida = self.output_response
 
         if not prompt:
@@ -105,7 +103,7 @@ class Load_ventana_modelos_basicos(QtWidgets.QDialog):
     def ejecutar_memoria(self):
         if DEBUG: print("[DEBUG] ejecutar_memoria()")
 
-        mensaje = self.imput_prompt_2.text().strip()  # <--- CORREGIDO
+        mensaje = self.imput_prompt_2.text().strip() 
         salida = self.output_response_2
 
         if not mensaje:
@@ -124,7 +122,7 @@ class Load_ventana_modelos_basicos(QtWidgets.QDialog):
             previo = salida.toPlainText()
             bloque = f"Tú: {mensaje}\nBot: {respuesta}\n"
             salida.setPlainText((previo + "\n" + bloque).strip())
-            self.imput_prompt_2.clear()  # <--- CORREGIDO
+            self.imput_prompt_2.clear()  
 
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Ocurrió un error:\n{e}")
@@ -143,7 +141,7 @@ class Load_ventana_modelos_basicos(QtWidgets.QDialog):
     def ejecutar_chat(self):
         if DEBUG: print("[DEBUG] ejecutar_chat()")
 
-        mensaje = self.imput_prompt_3.text().strip()  # <--- CORREGIDO
+        mensaje = self.imput_prompt_3.text().strip() 
         salida = self.output_response_3
 
         if not mensaje:
@@ -163,7 +161,7 @@ class Load_ventana_modelos_basicos(QtWidgets.QDialog):
             previo = salida.toPlainText()
             bloque = f"Tú: {mensaje}\nBot: {respuesta}\n"
             salida.setPlainText((previo + "\n" + bloque).strip())
-            self.imput_prompt_3.clear()  # <--- CORREGIDO
+            self.imput_prompt_3.clear()  
 
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Ocurrió un error:\n{e}")

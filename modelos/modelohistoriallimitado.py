@@ -8,7 +8,6 @@ class ModeloHistorialLimitado:
     
     #Chat con memoria limitada: después de max_turns mensajes de USUARIO,se reinicia el historial (olvida todo lo anterior menos lo de que es un asistente util y amigable).
     
-    # Constructor corregido (de _init_ a __init__)
     def __init__(self, api_key: str | None = None, max_turns: int = 3,
                  model: str = "gemini-2.5-flash", temperature: float = 0.7): # <--- Modelo corregido
         load_dotenv()
@@ -23,12 +22,11 @@ class ModeloHistorialLimitado:
             google_api_key=api_key,
         )
 
-        self.max_turns = max(1, int(max_turns))  # mínimo 1, por si acaso
+        self.max_turns = max(1, int(max_turns))  
 
         # Mensaje base que siempre va al principio del chat
         self._system_seed = "Eres un asistente útil y amigable."
 
-        # Armo el prompt del chat con el historial y la pregunta actual
         self.prompt = ChatPromptTemplate.from_messages([
             ("system", self._system_seed),
             MessagesPlaceholder("hist"),
@@ -57,7 +55,6 @@ class ModeloHistorialLimitado:
         # Actualizo el contador en caso de que se haya tocado el historial afuera
         self._user_turns = max(self._user_turns, self._count_user_turns())
 
-        # Si ya se alcanzó el límite de turnos, reseteo todo el historial
         if self._user_turns >= self.max_turns:
             self.reset()
 

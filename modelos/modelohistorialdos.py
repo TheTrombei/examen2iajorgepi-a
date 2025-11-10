@@ -6,10 +6,8 @@ from langchain_core.messages import HumanMessage, AIMessage
 
 class ModeloHistorialdos:
     
-    # Constructor corregido (de _init_ a __init__)
     def __init__(self, api_key: str | None = None, model: str = "gemini-2.5-flash", temperature: float = 0.7): # <--- Modelo corregido
         load_dotenv()
-        # Reviso si hay alguna de las dos API keys disponibles (GOOGLE o GEMINI)
         api_key = api_key or os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
         if not api_key:
             raise ValueError("No se encontró GOOGLE_API_KEY o GEMINI_API_KEY en el entorno o .env")
